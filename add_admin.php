@@ -3,8 +3,7 @@
 
 
 
-
-$conn=mysql_connect("localhost","root","");
+$conn=mysql_connect("http://13.65.206.139:3307","root","sXdG160000_62243");
 if(!$conn){
 
 	die('Could not connect'.mysql_error());
