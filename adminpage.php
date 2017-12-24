@@ -93,16 +93,16 @@ ID<br>
 					<?php
 
     include('session.php');
-$connection = mysql_connect('localhost', 'root', ''); //The Blank string is the password
-mysql_select_db('bloodbank');
+$conn = mysqli_connect('localhost', 'root', ''); //The Blank string is the password
+mysqli_select_db($conn, 'bloodbank');
 
 
 $query = "SELECT * FROM dash"; //You don't need a ; like you do in SQL
-$result = mysql_query($query);
+$result = mysqli_query($conn, $query);
 
 echo "<table border='2' align='center' bgcolor='white'>"; // start a table tag in the HTML
 echo "<tr><th>Name</th><th>Type</th><th>BloodGroup</th><th>Quantity</th><th>Address</th></tr>";
-while($row = mysql_fetch_array($result)){   //Creates a loop to loop through results
+while($row = mysqli_fetch_array($result)){   //Creates a loop to loop through results
 echo "<tr><td>" . $row['name'] . "</td><td>" . $row['type'] . "</td><td>".  $row['bg']. "</td><td>" . $row['q'] . "</td><td>" . $row['address'] . "</td></tr>" ;//the index here is a field name
 }
 

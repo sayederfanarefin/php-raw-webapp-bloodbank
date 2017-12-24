@@ -4,10 +4,10 @@
 
 
 
-$conn=mysql_connect("http://13.65.206.139:3307","root","sXdG160000_62243");
+$conn=mysqli_connect("localhost","root","");
 if(!$conn){
 
-	die('Could not connect'.mysql_error());
+	die('Could not connect'.mysqli_error());
 }
 
 if(isset($_POST['bb_name'])&&$_POST['bb_inchargename']&&$_POST['bb_contactno']&&$_POST['bb_address']){
@@ -23,15 +23,15 @@ values('$bb_name','$bb_inchargename','$bb_contactno','$bb_address')";
 
 
 
-mysql_select_db('bloodbank');
+mysqli_select_db($conn, 'bloodbank');
 
-mysql_query($sql,$conn)or die('Could not connect'.mysql_error());
+mysqli_query($conn, $sql)or die('Could not connect'.mysqli_error());
 
 header('Location: adminpage.php');
 //echo 'data successfully entered';
 }
 
-mysql_close($conn);
+mysqli_close($conn);
 
 
 

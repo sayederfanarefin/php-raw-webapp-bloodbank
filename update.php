@@ -1,10 +1,10 @@
 <?php
 
-$conn=mysql_connect("localhost","root","");
+$conn=mysqli_connect("localhost","root","");
 
 if(!$conn){
 
-	die('Could not connect! '.mysql_error());
+	die('Could not connect! '.mysqli_error());
 }
 
 if(isset($_POST['bb_id']))
@@ -16,12 +16,12 @@ $bb_id=$_POST['bb_id'];
 $sql="SELECT * FROM donation where bb_id='$bb_id'";
 
 
-mysql_select_db('bloodbank');
-mysql_query($sql,$conn)or die('Sorry! Could not connect! '.mysql_error()); 
-$result=mysql_query($sql,$conn);
+mysqli_select_db($conn, 'bloodbank');
+mysqli_query($conn, $sql)or die('Sorry! Could not connect! '.mysqli_error()); 
+$result=mysqli_query($conn, $sql);
 echo "<table border='3' align='center' bgcolor='white' >";
 echo "<tr><th>A Positve</th><th>A Negative</th><th>B Positve</th><th>B Negative</th><th>O Positve</th><th>O Negative</th><th>AB Positve</th><th>AB Negative</th></tr>";
-while($row = mysql_fetch_array($result)){   //Creates a loop to loop through results
+while($row = mysqli_fetch_array($result)){   //Creates a loop to loop through results
 
 echo "<form action=updatesql.php method=post>";
 echo "<tr>";
@@ -42,7 +42,7 @@ echo "</table>";
 }
 
 
-mysql_close($conn);
+mysqli_close($conn);
 
 
 ?>

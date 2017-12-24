@@ -44,8 +44,8 @@
 </html>
 <?php
 
-$connection = mysql_connect('localhost', 'root', ''); //The Blank string is the password
-mysql_select_db('bloodbank');
+$connection = mysqli_connect('localhost', 'root', ''); //The Blank string is the password
+mysqli_select_db($connection, 'bloodbank');
 
 
             
@@ -62,9 +62,9 @@ if(isset($_POST['p_name'])&&($_POST['p_pincode']))
                         $query="SELECT * FROM `patient`
                          WHERE `p_name`='$p_name' 
                          AND `p_pincode`='$p_pincode'";
-                        if($query_run=mysql_query($query))
+                        if($query_run=mysqli_query($connection, $query))
                         {
-                                $query_num_rows=mysql_num_rows($query_run);
+                                $query_num_rows=mysqli_num_rows($query_run);
 
                                 if($query_num_rows==0)
                                 {
@@ -72,8 +72,13 @@ if(isset($_POST['p_name'])&&($_POST['p_pincode']))
                                 }
                                 else if($query_num_rows==1)
                                 {
-                                    $p_id=mysql_result($query_run, 0, 'donor_id');
-                                   $_SESSION['p_id']=$p_id;
+                                   //  $p_id=mysqli_result($query_run, 0, 'donor_id');
+                                    
+                                   // $_SESSION['p_id']=$p_id;
+                                  $row=mysqli_fetch_array($result);
+                                  $p_id = $row['p_id'];
+                                  $_SESSION['p_id']=$p_id;
+                                  
                                     header('Location: abc.html');
                                 }
 

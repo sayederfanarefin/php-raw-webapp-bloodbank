@@ -1,7 +1,7 @@
 <?php
 
-$connection =mysql_connect("http://13.65.206.139:3307","root","sXdG160000_62243"); //The Blank string is the password
-mysql_select_db('bloodbank');
+$connection = mysqli_connect('localhost', 'root', ''); //The Blank string is the password
+mysqli_select_db($conn, 'bloodbank');
 
 
             
@@ -18,9 +18,9 @@ if(isset($_POST['donor_name'])&&($_POST['donor_pincode']))
                         $query="SELECT * FROM `donor`
                          WHERE `donor_name`='$donor_name' 
                          AND `donor_pincode`='$donor_pincode'";
-                        if($query_run=mysql_query($query))
+                        if($query_run=mysqli_query($query))
                         {
-                                $query_num_rows=mysql_num_rows($query_run);
+                                $query_num_rows=mysqli_num_rows($query_run);
 
                                 if($query_num_rows==0)
                                 {
@@ -28,7 +28,7 @@ if(isset($_POST['donor_name'])&&($_POST['donor_pincode']))
                                 }
                                 else if($query_num_rows==1)
                                 {
-                                    $donor_id=mysql_result($query_run, 0, 'donor_id');
+                                    $donor_id=mysqli_result($query_run, 0, 'donor_id');
                                   // $_SESSION['donor_id']=$donor_id;
                                     header('Location: abc.html');
                                 }

@@ -3,10 +3,11 @@
 
 
 
-$conn=mysql_connect("http://13.65.206.139:3307","root","sXdG160000_62243");
+
+$conn=mysqli_connect("localhost","root","");
 if(!$conn){
 
-	die('Could not connect'.mysql_error());
+	die('Could not connect'.mysqli_error());
 }
 
 if(isset($_POST['admin_name'])&&$_POST['admin_pass']){
@@ -17,11 +18,11 @@ $admin_pass=$_POST['admin_pass'];
 
 $sql="insert into admin(admin_name,admin_pass)values('$admin_name','$admin_pass')";
 
-mysql_select_db('bloodbank');
-mysql_query($sql,$conn)or die('Could not connect'.mysql_error()); 
+mysqli_select_db($conn, 'bloodbank');
+mysqli_query($conn, $sql)or die('Could not connect'.mysqli_error()); 
 echo 'data successfully entered';
 }
-mysql_close($conn);
+mysqli_close($conn);
 header('Location: adminpage.php');
 
 

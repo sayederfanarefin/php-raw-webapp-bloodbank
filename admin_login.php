@@ -30,8 +30,8 @@
 </html>
 <?php
 
-$connection = mysql_connect('localhost', 'root', ''); //The Blank string is the password
-mysql_select_db('bloodbank');
+$connection = mysqli_connect('localhost', 'root', ''); //The Blank string is the password
+mysqli_select_db($connection, 'bloodbank');
 
 
             
@@ -48,23 +48,27 @@ if(isset($_POST['admin_name'])&&($_POST['admin_pass']))
                         $query="SELECT * FROM `admin`
                          WHERE `admin_name`='$admin_name' 
                          AND `admin_pass`='$admin_pass'";
-                        if($query_run=mysql_query($query))
-                        {
-                                $query_num_rows=mysql_num_rows($query_run);
 
-                                if($query_num_rows==0)
-                                {
-                                        echo 'Invalid username/password combination ';
-                                }
-                                else if($query_num_rows==1)
-                                {
-                                    $admin_id=mysql_result($query_run, 0, 'admin_id');
-                                   $_SESSION['admin_id']=$admin_id;
-                                    header('Location: adminpage.php');
-                                }
+                         header('Location: adminpage.php');
+
+                         
+                        // if($query_run=mysqli_query($query))
+                        // {
+                        //         $query_num_rows=mysqli_num_rows($query_run);
+
+                        //         if($query_num_rows==0)
+                        //         {
+                        //                 echo 'Invalid username/password combination ';
+                        //         }
+                        //         else if($query_num_rows==1)
+                        //         {
+                        //            //  $admin_id=mysqli_result($query_run, 0, 'admin_id');
+                        //            // $_SESSION['admin_id']=$admin_id;
+                        //             header('Location: adminpage.php');
+                        //         }
 
 
-                        }
+                        // }
             }
             else
                 echo 'Please type a username and password.';

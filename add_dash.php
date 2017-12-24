@@ -4,10 +4,10 @@
 
 
 
-$conn=mysql_connect("localhost","root","");
+$conn=mysqli_connect("localhost","root","");
 if(!$conn){
 
-	die('Could not connect'.mysql_error());
+	die('Could not connect'.mysqli_error());
 }
 
 if(isset($_POST['name'])&&$_POST['type']&&$_POST['bg']&&$_POST['q']&&$_POST['address']){
@@ -20,11 +20,11 @@ $address=$_POST['address'];
 
 $sql="insert into dash(name,type,bg,q,address)values('$name','$type','$bg','$q','$address')";
 
-mysql_select_db('bloodbank');
-mysql_query($sql,$conn)or die('Could not connect'.mysql_error()); 
+mysqli_select_db($conn, 'bloodbank');
+mysqli_query($conn, $sql)or die('Could not connect'.mysqli_error()); 
 echo 'data successfully entered';
 }
-mysql_close($conn);
+mysqli_close($conn);
 
 ?>
 <html>

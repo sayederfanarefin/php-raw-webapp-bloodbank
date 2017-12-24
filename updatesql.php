@@ -4,10 +4,10 @@
 
 
 
-$conn=mysql_connect("localhost","root","");
+$conn=mysqli_connect("localhost","root","");
 if(!$conn){
 
-	die('Could not connect'.mysql_error());
+	die('Could not connect'.mysqli_error());
 }
 
 if(isset($_POST['update'])){
@@ -23,11 +23,11 @@ $bb_id=$_POST['bb_id'];
 
 $sql="UPDATE `donation` SET `A+`=$ap,`A-`=$an,`B+`=$bp,`B-`=$bn,`O+`=$op,`O-`=$on,`AB+`=$abp,`AB-`=$abn WHERE bb_id='$bb_id'";
 
-mysql_select_db('bloodbank');
-mysql_query($sql,$conn)or die('Could not connect'.mysql_error()); 
+mysqli_select_db($conn, 'bloodbank');
+mysqli_query($conn, $sql)or die('Could not connect'.mysqli_error()); 
 echo 'data successfully updated';
 }
-mysql_close($conn);
+mysqli_close($conn);
 
 
 

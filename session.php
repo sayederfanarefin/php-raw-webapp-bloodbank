@@ -33,11 +33,11 @@ function adminlogin()
 function GetUserField($field)
 {
 	$query = "SELECT '$field' FROM 'donor' WHERE 'donor_id' = '".$_SESSION['donor_id']."'";
-	if($query_run = mysql_query($query))
+	if($query_run = mysqli_query($query))
 	{
-		if($mysql_result=mysql_result($query_run, 0 , $field))
+		if($mysqli_result=mysqli_result($query_run, 0 , $field))
 		{
-			return mysql_result;
+			return mysqli_result;
 		}
 	}
 }
