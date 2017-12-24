@@ -1,6 +1,6 @@
 <?php
 
-$connection = mysqli_connect('localhost', 'root', ''); //The Blank string is the password
+$connection = mysqli_connect('localhost', 'root', 'sXdG160000_62243'); //The Blank string is the password
 mysqli_select_db($conn, 'bloodbank');
 
 

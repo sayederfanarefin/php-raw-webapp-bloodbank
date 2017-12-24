@@ -40,7 +40,7 @@
 <?php
 
 echo "<body bgcolor= 'red'>";
-$conn = mysqli_connect('localhost', 'root', ''); //The Blank string is the password
+$conn = mysqli_connect('localhost', 'root', 'sXdG160000_62243'); //The Blank string is the password
 mysqli_select_db($conn, 'bloodbank');
 
 $query = "SELECT * FROM donation,bb where bb.bb_id=donation.bb_id"; //You don't need a ; like you do in SQL

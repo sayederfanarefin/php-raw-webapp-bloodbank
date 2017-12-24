@@ -93,7 +93,7 @@ ID<br>
 					<?php
 
     include('session.php');
-$conn = mysqli_connect('localhost', 'root', ''); //The Blank string is the password
+$conn = mysqli_connect('localhost', 'root', 'sXdG160000_62243'); //The Blank string is the password
 mysqli_select_db($conn, 'bloodbank');
 
 
