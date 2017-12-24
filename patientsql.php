@@ -27,6 +27,6 @@ mysqli_query($conn, $sql)or die('Sorry! Could not connect! '.mysqli_error());
 echo 'data successfully entered';
 }
 mysqli_close($conn);
-
+header('Location: abc.html');
 
 ?>
